@@ -1,17 +1,19 @@
 <x-app-layout>
-    <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Dashboard') }}
-        </h2>
-    </x-slot>
-
-    <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-6 text-gray-900">
-                    {{ __("You're logged in!") }}
-                </div>
+    @section('content')
+        <form action="{{ route('wakeup.post') }}" method="POST">
+            @csrf
+            <div class="mb-3">
+                <label for="wakeup-time" class="form-label">起床予定</label>
+                <input type="time" class="form-control" id="wakeup-time">
             </div>
-        </div>
-    </div>
+            <div class="mb-3">
+                <label for="keyword" class="form-label">キーワード</label>
+                <input type="text" class="form-control" id="keyword" name="keyword">
+            </div>
+            <button type="submit" class="btn btn-primary w-100">おやすみなさい <i class="bi bi-moon-fill"></i></button>
+        </form>
+        <br>
+        <a href={{ route('demo.first') }} class="btn btn-primary">Demo1</a>
+        <a href={{ route('demo.second') }} class="btn btn-primary">Demo2</a>
+    @endsection
 </x-app-layout>
